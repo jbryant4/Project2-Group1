@@ -25,50 +25,50 @@ Or if the user could not find the movie on the search they could add one to our 
 
 #### Models
 
-User: 
-  id  
-  username
-  email
-  password
+##### User: 
+  - id  
+  - username
+  - email
+  - password
 
-List:
-  id
-  list genre
-  list name
+##### List:
+  - id
+  - list genre
+  - list name
   
 
-Movies:
-  id:
-  title:
-  rating:
-  year of release:
-  director:
-  etc etc ettc (really whatever data we need)
-  list_id
+##### Movies:
+  - id:
+  - title:
+  - rating:
+  - year of release:
+  - director:
+  - etc etc ettc (really whatever data we need)
+  - list_id
 
-Votes: 
-  id
-  user_id
-  list_id
+##### Votes: 
+  - id
+  - user_id
+  - list_id
   
 If we want we can add comments or change upvote to like a number rating system:
 Also note the more models we have the more association and crud routes we will need
 
 #### Views
 
-Login Page/Welcome page: 
+##### Login Page/Welcome page: 
  - Where user can log in and are greeted with a message or a video of how the app works
-Homepage:
+##### Homepage:
   - will be a list of current list made by the user (sortable by most like/genre/most recent)
   - will have a nav bar 
-User Page
+##### User Page
   - user will see there own list made 
   - when clicking on a list it will take them to the list editing/delete page 
   - will also have a make a list button 
   - (bonus have an area where the app shows you a recomended movie section)
-Make a list Page
+##### Make a list Page
   -will make searches or add manuelly movies
-Edit/Delete list page 
+##### Edit/Delete list page 
   - can remove movies from list 
   - can delete list 
   - can rename list or change genre
