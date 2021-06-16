@@ -1,0 +1,3 @@
+//List Model
+
+    // will contain id, listTitle, movieList ..... 
