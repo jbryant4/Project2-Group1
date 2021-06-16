@@ -41,7 +41,11 @@
           validate: {
             len: [4]
           }
-        }
+        },
+        followList: {
+            type: DataTypes.STRING,
+            allowNull: false
+          },
       },
       {
         hooks: {
