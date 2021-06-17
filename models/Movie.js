@@ -1,43 +1,39 @@
-// Movies Model 
 
+//add sequelize and the connection
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// create our Movie model
+// attach Vote to sequelize model 
+class Movie extends Model { }// Movies Model 
+
 // id, movieTitle, year, genre (whatever else we want to pull from the api), list_id
-
-class Movie extends Model {}
-
 Movie.init(
     {
         id: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        movieTitle: {
+        movie_title: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        year: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+        description: {
+            type: DataTypes.STRING,
+            allowNull: true,
         },
         genre: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true,
         },
-        list_id: {
+        year: {
             type: DataTypes.INTEGER,
-            references: {
-                model: 'list',
-                key: 'id'
-            }
+            allowNull: true,
         }
     },
     {
         sequelize,
-        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'movie'
