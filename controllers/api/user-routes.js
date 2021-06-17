@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { User, List, Comments, Vote, Movies } = require('../../models');
 
-// get all users
+
+//get all users
 router.get('/', (req, res) => {
   User.findAll({
     attributes: { exclude: ['password'] }
@@ -14,7 +15,6 @@ router.get('/', (req, res) => {
 });
 
 //get user by id
-
 router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
@@ -55,6 +55,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+//create a user
 router.post('/', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
@@ -77,6 +78,7 @@ router.post('/', (req, res) => {
     });
 });
 
+//user login
 router.post('/login', (req, res) => {
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
@@ -106,6 +108,7 @@ router.post('/login', (req, res) => {
   });
 });
 
+//user logout
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
@@ -117,6 +120,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
+//update user
 router.put('/:id', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
 
@@ -140,6 +144,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
+//delete user
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
