@@ -1,9 +1,11 @@
 //! import all the models
 const User = require('./User');
 const List = require('./List');
-const Movies = require('./Movies');
-const Comments = require('./Comments');
+const Movie = require('./Movie');
+const Comment = require('./Comment');
 const Vote = require('./Vote');
+const Follower = require('./Follower')
+const ListContent = require('./ListContent')
 
 //!Associations
 //user has many list 
@@ -18,8 +20,13 @@ List.belongsTo(User, {
 
 //! need help user to user association
 // user has many users
-User.hasMany(User);
-User.belongsToMany(User);
+User.belongsToMany(User, {
+    through: Follower,
+    as: follow_list,
+
+    foreignKey: 'user_id',
+    onDelete: 'SET NULL'
+});
 
 // user belongs to many lists through vote (ref)
 User.belongsToMany(List, {
@@ -40,13 +47,17 @@ List.belongsToMany(User, {
 });
 
 //list has many movies
-List.hasMany(Movies, {
+List.hasMany(Movie, {
     foreignKey: 'list_id'
 });
 
-// movies belongs to many lists 
-Movies.belongsToMany(List, {
-    foreignKey: 'list_id'
+//! movies belongs to many lists (might need help here) 
+Movie.belongsToMany(List, {
+    through: ListContent,
+    as: 'list_content',
+
+    foreignKey: 'list_id',
+    onDelete: 'SET NULL'
 });
 
 // vote belongs to user
@@ -70,28 +81,28 @@ List.hasMany(Vote, {
 });
 
 // comments belongs to user
-Comments.belongsTo(User, {
+Comment.belongsTo(User, {
     foreignKey: 'user_id',
     onDelete: 'SET NULL'
 });
 
 // comment belongs to list
-Comments.belongsTo(List, {
+Comment.belongsTo(List, {
     foreignKey: 'list_id',
     onDelete: 'SET NULL'
 });
 
 // user has many comments 
-User.hasMany(Comments, {
+User.hasMany(Comment, {
     foreignKey: 'user_id',
     onDelete: 'SET NULL'
 });
 
 // list has many comments
-List.hasMany(Comments, {
+List.hasMany(Comment, {
     foreignKey: 'list_id',
     onDelete: 'SET NULL'
 });
 
 //! export all models
-module.exports = { User, List, Movies, Comments, Vote }
+module.exports = { User, List, Movie, Comment, Vote }

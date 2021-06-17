@@ -3,11 +3,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// attach Vote to sequelize Mmodel 
-class Movies extends Model { }// Movies Model 
+// attach Vote to sequelize model 
+class Movie extends Model { }// Movies Model 
 
 // id, movieTitle, year, genre (whatever else we want to pull from the api), list_id
-Movies.init(
+Movie.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -15,7 +15,7 @@ Movies.init(
             primaryKey: true,
             autoIncrement: true
         },
-        movieTitle: {
+        movie_title: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -25,26 +25,19 @@ Movies.init(
         },
         genre: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         year: {
             type: DataTypes.INTEGER,
             allowNull: true,
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
         }
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'list'
+        modelName: 'movie'
     }
 );
 
-module.exports = List;
+module.exports = Movie;

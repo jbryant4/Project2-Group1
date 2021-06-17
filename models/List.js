@@ -50,10 +50,6 @@ List.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        movieList: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
         user_id: {
             type: DataTypes.INTEGER,
             references: {
