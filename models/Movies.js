@@ -6,9 +6,9 @@ const sequelize = require('../config/connection');
 // create our Movie model
 // id, movieTitle, year, genre (whatever else we want to pull from the api), list_id
 
-class Movies extends Model {}
+class Movie extends Model {}
 
-Movies.init(
+Movie.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -40,8 +40,8 @@ Movies.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'movies'
+        modelName: 'movie'
     }
 );
 
-module.exports = Vote;
+module.exports = Movie;

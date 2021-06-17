@@ -42,10 +42,7 @@
             len: [4]
           }
         },
-        followList: {
-            type: DataTypes.STRING,
-            allowNull: true
-          },
+       
       },
       {
         hooks: {
