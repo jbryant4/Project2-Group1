@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { List, User, Comments, Vote, Movies } = require('../../models');
+const { List, User, Comment, Vote, Movie } = require('../../models');
 
 
 // get all users
@@ -77,8 +77,8 @@ router.get('/:id', (req, res) => {
         });
 });
 
-router.list('/', (req, res) => {
-    // expects {title: 'Taskmaster goes public!', list_url: 'https://taskmaster.com/press', user_id: 1}
+router.post('/', (req, res) => {
+    // expects 
     List.create({
         title: req.body.title,
         movie_list: req.body.list_url,

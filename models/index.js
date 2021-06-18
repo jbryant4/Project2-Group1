@@ -22,7 +22,7 @@ List.belongsTo(User, {
 // user has many users
 User.belongsToMany(User, {
     through: Follower,
-    as: follow_list,
+    as: 'follow_list',
 
     foreignKey: 'user_id',
     onDelete: 'SET NULL'
@@ -51,7 +51,7 @@ List.hasMany(Movie, {
     foreignKey: 'list_id'
 });
 
-//! movies belongs to many lists (might need help here) 
+// movies belongs to many lists (might need help here) 
 Movie.belongsToMany(List, {
     through: ListContent,
     as: 'list_content',
