@@ -2,11 +2,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// attach Vote to sequelize model 
+// attach Follower to sequelize model 
 class Follower extends Model { }
 
-//Vote Model
-// id, user_id, list_id 
+
+// id, user_id, follow_id 
 Follower.init(
     {
         id: {

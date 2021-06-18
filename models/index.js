@@ -48,15 +48,13 @@ List.belongsToMany(User, {
 
 //list has many movies
 List.hasMany(Movie, {
-    foreignKey: 'list_id'
+    
 });
 
 // movies belongs to many lists (might need help here) 
 Movie.belongsToMany(List, {
     through: ListContent,
-    as: 'list_content',
 
-    foreignKey: 'list_id',
     onDelete: 'SET NULL'
 });
 
@@ -104,5 +102,5 @@ List.hasMany(Comment, {
     onDelete: 'SET NULL'
 });
 
-//! export all models
+// export all models
 module.exports = { User, List, Movie, Comment, Vote }
