@@ -50,6 +50,7 @@ List.belongsToMany(User, {
 List.belongsToMany(Movie, {
     through: ListContent,
 
+    foreignKey: 'list_id',
     onDelete: 'SET NULL'
 });
 
@@ -57,6 +58,7 @@ List.belongsToMany(Movie, {
 Movie.belongsToMany(List, {
     through: ListContent,
 
+    foreignKey: 'movie_id',
     onDelete: 'SET NULL'
 });
 

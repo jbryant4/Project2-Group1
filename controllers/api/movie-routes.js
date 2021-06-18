@@ -11,14 +11,34 @@ router.get('/', (req, res) => {
         });
 });
 
+//FIND A WAY TO REMOVE LIST CONTENT
+router.get('/:id', (req, res) => {
+    Movie.findOne({
+        where: {
+            id: req.params.id
+        },
+        include: [
+            {
+                model: List,
+                attributes: ['title']
+            }
+        ] 
+    })
+        .then(dbMoviesData => res.json(dbMoviesData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
 router.post('/', (req, res) => {
     // check the session
     if (req.session) {
         Movie.create({
-            movie_title: req.body.movie_text,
-            description: req.body.movie_id,
-            genre: req.body.movie_genre,
-            year: req.body.movie_year
+            movie_title: req.body.movie_title,
+            description: req.body.description,
+            genre: req.body.genre,
+            year: req.body.year
         })
             .then(dbMoviesData => res.json(dbMoviesData))
             .catch(err => {
