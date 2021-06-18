@@ -12,7 +12,7 @@ router.get('/search', function (req, res) {
          let json = JSON.parse(body); 
          if (!err && json.Search)
           { res.render('search', { movie: json.Search, q: query }); }
-           else { request('http://www.omdbapi.com/?s=dragon+ball' + "&apikey=" + apiKey, 
+           else { fetch('http://www.omdbapi.com/?s=dragon+ball' + "&apikey=" + apiKey, 
            function (err, response, body) {
                 let notFound = JSON.parse(body); res.render('search', { movie: notFound.Search, q: query }
                 );
