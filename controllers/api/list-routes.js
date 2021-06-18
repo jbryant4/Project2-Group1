@@ -3,7 +3,7 @@ const sequelize = require('../../config/connection');
 const { List, User, Comment, Vote, Movie } = require('../../models');
 
 
-// get all users
+// get all lists
 router.get('/', (req, res) => {
     console.log('======================');
     List.findAll({
@@ -23,10 +23,6 @@ router.get('/', (req, res) => {
                     attributes: ['username']
                 }
             },
-            {
-                model: User,
-                attributes: ['username']
-            }
         ]
     })
         .then(dbListData => res.json(dbListData))
@@ -43,7 +39,6 @@ router.get('/:id', (req, res) => {
         },
         attributes: [
             'id',
-            'list_url',
             'title',
             'created_at',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE list.id = vote.list_id)'), 'vote_count']
@@ -58,8 +53,8 @@ router.get('/:id', (req, res) => {
                 }
             },
             {
-                model: User,
-                attributes: ['username']
+                model: Movie,
+                attributes: ['id', 'movie_title']
             }
         ]
     })
@@ -89,7 +84,7 @@ router.post('/', (req, res) => {
             res.status(500).json(err);
         });
 });
-
+//HEY JOEY DOUBLE CHECK THIS LATER
 router.put('/upvote', (req, res) => {
     //session exists
     if (req.session) {
