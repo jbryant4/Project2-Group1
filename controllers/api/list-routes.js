@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
         attributes: [
             'id',
             'title',
-            'movie_list',
             'created_at',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE list.id = vote.list_id)'), 'vote_count']
         ],

@@ -47,8 +47,10 @@ List.belongsToMany(User, {
 });
 
 //list has many movies
-List.hasMany(Movie, {
-    
+List.belongsToMany(Movie, {
+    through: ListContent,
+
+    onDelete: 'SET NULL'
 });
 
 // movies belongs to many lists (might need help here) 
@@ -103,4 +105,4 @@ List.hasMany(Comment, {
 });
 
 // export all models
-module.exports = { User, List, Movie, Comment, Vote }
+module.exports = { User, List, Movie, Comment, Vote, Follower, ListContent }

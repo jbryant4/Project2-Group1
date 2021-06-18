@@ -1,9 +1,9 @@
 const router = require('express').Router();
 // const sequelize = require('../../config/connection');
-const { Movie } = require('../../models');
+const { Movie, List } = require('../../models');
 
 router.get('/', (req, res) => {
-    Movie.findAll()
+    Movie.findAll({})
         .then(dbMoviesData => res.json(dbMoviesData))
         .catch(err => {
             console.log(err);
