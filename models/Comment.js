@@ -1,5 +1,4 @@
 //Comment Model
-
 // id, commentText,user_id, list_id
 
 const { Model, DataTypes } = require("sequelize");
@@ -48,3 +47,4 @@ Comment.init(
 );
 
 module.exports = Comment;
+
