@@ -22,7 +22,7 @@ List.belongsTo(User, {
 // user has many users
 User.belongsToMany(User, {
     through: Follower,
-    as: follow_list,
+    as: 'follow_list',
 
     foreignKey: 'user_id',
     onDelete: 'SET NULL'
@@ -47,16 +47,18 @@ List.belongsToMany(User, {
 });
 
 //list has many movies
-List.hasMany(Movie, {
-    foreignKey: 'list_id'
-});
-
-//! movies belongs to many lists (might need help here) 
-Movie.belongsToMany(List, {
+List.belongsToMany(Movie, {
     through: ListContent,
-    as: 'list_content',
 
     foreignKey: 'list_id',
+    onDelete: 'SET NULL'
+});
+
+// movies belongs to many lists (might need help here) 
+Movie.belongsToMany(List, {
+    through: ListContent,
+
+    foreignKey: 'movie_id',
     onDelete: 'SET NULL'
 });
 
@@ -104,5 +106,5 @@ List.hasMany(Comment, {
     onDelete: 'SET NULL'
 });
 
-//! export all models
-module.exports = { User, List, Movie, Comment, Vote }
+// export all models
+module.exports = { User, List, Movie, Comment, Vote, Follower, ListContent }

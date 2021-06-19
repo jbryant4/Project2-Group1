@@ -1,4 +1,7 @@
 
+// Movies Model 
+// id, movieTitle, year, genre (whatever else we want to pull from the api), list_id
+
 //add sequelize and the connection
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
@@ -41,3 +44,4 @@ Movie.init(
 );
 
 module.exports = Movie;
+

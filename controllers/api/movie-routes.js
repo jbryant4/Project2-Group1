@@ -1,9 +1,29 @@
 const router = require('express').Router();
-const sequelize = require('../../config/connection');
-const { List, User, Comments, Vote, Movies } = require('../../models');
+// const sequelize = require('../../config/connection');
+const { Movie, List } = require('../../models');
 
 router.get('/', (req, res) => {
-    Movies.findAll()
+    Movie.findAll({})
+        .then(dbMoviesData => res.json(dbMoviesData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+//FIND A WAY TO REMOVE LIST CONTENT
+router.get('/:id', (req, res) => {
+    Movie.findOne({
+        where: {
+            id: req.params.id
+        },
+        include: [
+            {
+                model: List,
+                attributes: ['title']
+            }
+        ] 
+    })
         .then(dbMoviesData => res.json(dbMoviesData))
         .catch(err => {
             console.log(err);
@@ -14,11 +34,11 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     // check the session
     if (req.session) {
-        Movies.create({
-            movie_title: req.body.movie_text,
-            description: req.body.movie_id,
-            genre: req.body.movie_genre,
-            year: req.body.movie_year
+        Movie.create({
+            movie_title: req.body.movie_title,
+            description: req.body.description,
+            genre: req.body.genre,
+            year: req.body.year
         })
             .then(dbMoviesData => res.json(dbMoviesData))
             .catch(err => {
@@ -29,7 +49,7 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    Movies.destroy({
+    Movie.destroy({
         where: {
             id: req.params.id
         }
@@ -46,3 +66,5 @@ router.delete('/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
+
+module.exports = router
