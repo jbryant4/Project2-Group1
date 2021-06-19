@@ -1,27 +1,41 @@
-const router = require('express').Router();
-const sequelize = require('../../config/connection');
-const db = require('../models');
+//const router = require('express').Router();
+//const sequelize = require('../../config/connection');
+//const db = require('../models');
 const apiKey = process.env.DB_APIKEY;
 
 
-function movieSearch (data) {
-    
+
+function movieSearch(data) {
+
+
     const movieUrl = "http://www.omdbapi.com/?t=" + data + "&apikey=" + apiKey;
-    fetch(movieUrl).then(function (response){
+    fetch(movieUrl).then(function (response) {
         if (response.ok) {
             response.json()
-            .then(function (data){
-                console.log(data);
-            });
+                .then(function (data) {
+                   
+                    const movieObject = {
+                        movie_title: data.Title,
+                        description: data.Plot,
+                        genre: data.Genre,
+                        year: data.Year
+                    }
+                    console.log(movieObject);
+                    return(movieObject);
+
+                });
 
 
         }
-    
-    }); 
+
+    });
 }
-    
 
 
-movieSearch(ghost);
+
+module.exports = movieSearch;
+
+
+
 
 
