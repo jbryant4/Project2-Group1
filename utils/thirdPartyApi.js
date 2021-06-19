@@ -3,21 +3,25 @@ const sequelize = require('../../config/connection');
 const db = require('../models');
 const apiKey = process.env.DB_APIKEY;
 
-router.get('/', function (req, res) { res.render('index'); });
 
-router.get('/search', function (req, res) {
-    const query = req.query.q;
-    fetch('http://www.omdbapi.com/?s=' + query + "&apikey=" + apiKey, function (err, response, body)
-     { 
-         let json = JSON.parse(body); 
-         if (!err && json.Search)
-          { res.render('search', { movie: json.Search, q: query }); }
-           else { fetch('http://www.omdbapi.com/?s=dragon+ball' + "&apikey=" + apiKey, 
-           function (err, response, body) {
-                let notFound = JSON.parse(body); res.render('search', { movie: notFound.Search, q: query }
-                );
-             });
-             } 
+function movieSearch (data) {
+    
+    const movieUrl = "http://www.omdbapi.com/?t=" + data + "&apikey=" + apiKey;
+    fetch(movieUrl).then(function (response){
+        if (response.ok) {
+            response.json()
+            .then(function (data){
+                console.log(data);
             });
-});
+
+
+        }
+    
+    }); 
+}
+    
+
+
+movieSearch(ghost);
+
 
