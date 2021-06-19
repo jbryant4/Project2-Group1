@@ -24,7 +24,7 @@ ListContent.init(
         movie_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'list',
+                model: 'movie',
                 key: 'id'
             }
         }
