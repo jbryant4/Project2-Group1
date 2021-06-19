@@ -1,5 +1,5 @@
 {
-  "name": "Project2-Group1",
+  "name": "project2-group1",
   "version": "1.0.0",
   "description": "As a user i want to be able to create,compair and like custom movie list made by multiple users",
   "main": "server.js",
