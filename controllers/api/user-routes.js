@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: List,
-        attributes: ['id', 'title', 'post_url', 'created_at']
+        attributes: ['id', 'title', 'created_at']
       },
       {
         model: Comment,
@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
         model: List,
         attributes: ['title'],
         through: Vote,
-        as: 'voted_posts'
+        as: 'voted_lists'
       }
     ]
   })

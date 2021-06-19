@@ -23,7 +23,6 @@ Comment.init(
         },
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
                 model: "user",
                 key: "id",
@@ -31,7 +30,6 @@ Comment.init(
         },
         list_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
                 model: "list",
                 key: "id",
