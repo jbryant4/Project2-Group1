@@ -1,7 +1,43 @@
-<ol class="post-list">
-    {{#each posts as |post|}}
-    <li>
-        {{> post-info post }}
-    </li>
-    {{/each}}
-</ol>
+<div class="row">
+
+
+
+    <div class="col-3">
+        <div class="card" id="hugCard">
+            <div class="card-body">
+                <h3>Help Us Grow!</h3>
+                <p id="user-count">Total Users:</p>
+                <p id="list-count">Total Lists:</p>
+                <p id="movies-count">Total Movies:</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card" id="listCard">
+            <h3>Current Recs</h3>
+            <ol class="list-list">
+                {{#each lists as |list|}}
+                <li>
+                    {{> list-info list}}
+                </li>
+                {{/each}}
+            </ol>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card" id="mostLikedCard">
+            <h3>Top of the Pops!</h3>
+            <ol class="list-list">
+                {{#each lists as |list|}}
+                <li>
+                    {{> list-info list}}
+                </li>
+                {{/each}}
+            </ol>
+        </div>
+    </div>
+
+</div>
