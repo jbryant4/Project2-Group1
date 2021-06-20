@@ -10,17 +10,20 @@ router.get('/', (req, res) => {
       user_id: req.session.user_id
     },
     attributes: [
-      //
-      //
-      //
-      //
+      'id',
+        'title',
+        'created_at',
+        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE list.id = vote.list_id)'), 'vote_count']
     ],
+    order: [['created_at', 'DESC']],
     include: [
       {
-        //
-        //
-        //
-        //
+        model: Comment,
+        attributes: ['id', 'comment_text', 'list_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
       }
     ]
   })
@@ -43,17 +46,23 @@ router.get('/list/:id', (req, res) => {
       id: req.params.id
     },
     attributes: [
-      //
-      //
-      //
-      //
+      'id',
+      'title',
+      'created_at',
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE list.id = vote.list_id)'), 'vote_count']
     ],
     include: [
       {
-        //
-        //
-        //
-        //
+        model: Comment,
+        attributes: ['id', 'comment_text', 'list_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
+        model: Movie,
+        attributes: ['id', 'movie_title']
       }
     ]
   })
