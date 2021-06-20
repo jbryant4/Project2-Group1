@@ -6,39 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <title>Project 2, Team 1</title>
 </head>
 
 <body>
+
+    <header>
+
+        <nav class="navbar navbar-default navbar-light bg-light justify-content-between">
+
+            <h1>
+                Filmy!
+            </h1>
+
+            {{#if loggedIn}}
+            <ul>
+                <label for="userSearchForm">Search for a user</label>
+                <input type="text" id="user-search" />
+                <button type="submit">Search!</button>
+                <button id="profPageBtn" class="btn">Profile Page</button>
+                <button id="listPageBtn" class="btn">Movies</button>
+                <button id="logout" class="btn">logout</button>
+            </ul>
+            {{else}}
+            <ul>
+                {{!-- I'm assuming here for `listPageBtn` we'll just send the user home --}}
+                <a href="/" id="navMoviesLink">Movies</a>
+                <a href="/login" id="navLoginLink">Login or Sign Up!</a>
+            </ul>
+            {{/if}}
+
+        </nav>
+
+    </header>
     <div class="container">
-        <header>
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-
-                <h1>
-                    Filmy!
-                </h1>
-
-                {{#if loggedIn}}
-                <ul>
-                    <label for="userSearchForm">Search for a user</label>
-                    <input type="text" id="user-search" />
-                    <button type="submit">Search!</button>
-                    <button id="profPageBtn" class="btn">Profile Page</button>
-                    <button id="listPageBtn" class="btn">Movies</button>
-                    <button id="logout" class="btn">logout</button>
-                </ul>
-                {{else}}
-                <ul>
-                    {{!-- I'm assuming here for `listPageBtn` we'll just send the user home --}}
-                    <button id="listPageBtn" class="btn">Movies</button>
-                    <button id="login" class="btn">Login or Sign Up!</button>
-                </ul>
-                {{/if}}
-
-            </nav>
-
-        </header>
         <main>
             {{{ body }}}
         </main>
