@@ -35,6 +35,10 @@ card {
     padding-top: 10px;
 }
 
+#user-list-count {
+    padding-top: 10px;
+}
+
 #welcomeCard {
     width: 100%;
     padding: 10px;
@@ -52,4 +56,10 @@ card {
     width: 375px;
     padding-top: 20px;
     
+}
+
+#profilePic {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
 }
