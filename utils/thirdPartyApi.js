@@ -13,7 +13,7 @@ function movieSearch(data) {
         if (response.ok) {
             response.json()
                 .then(function (data) {
-                   
+
                     const movieObject = {
                         movie_title: data.Title,
                         description: data.Plot,
@@ -21,20 +21,20 @@ function movieSearch(data) {
                         year: data.Year
                     }
                     console.log(movieObject);
-                    return(movieObject);
-                    
+                    return (movieObject);
+                   })
+                   .catch (err => {
+                    console.log(err);
+                    res.status(404).json({ message: 'No movie found with this title' });
 
-                });
+        });
 
 
-        }
+}
 
     });
 }
 
-//need else           let notFound = JSON.parse(body); res.render('search', { movie: notFound.Search, q: query }
-
-//check if we need to render to html directly
 
 module.exports = movieSearch;
 
