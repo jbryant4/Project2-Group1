@@ -14,41 +14,42 @@
 <body>
 
     <header>
-
-        <nav class="navbar navbar-default navbar-light bg-light justify-content-between">
+        <nav class="navbar justify-content-between">
 
             <h1>
-                Filmy!
+                <a href="/" id="title">myMovieList!</a>
             </h1>
 
             {{#if loggedIn}}
             <ul>
                 <label for="userSearchForm">Search for a user</label>
                 <input type="text" id="user-search" />
-                <button type="submit">Search!</button>
-                <a href="/profile" id="profPageNavLink">Profile Page</a>
-                <a href="/" id="moviesNavLink">Movies</a>
-                <a id="logout">logout</a>
+                <button type="submit" id="search-btn">Search!</button>
+                <a href="/profile" class="button" id="profPageNavLink">Profile Page</a>
+                <a class="button" href="/" id="moviesNavLink">Movies</a>
+                <a class="button" id="logout">logout</a>
             </ul>
             {{else}}
             <ul>
-                {{!-- I'm assuming here for `listPageBtn` we'll just send the user home if they're not logged in --}}
-                <a href="/" id="moviesNavLink">Movies</a>
-                <a href="/login" id="LoginNavLink">Login or Sign Up!</a>
+                {{!-- I'm assuming here for `listPageBtn` we'll just send the user home if they're not logged in
+                --}}
+                <a href="/" class="btn">Movies</a>
+                <a href="/login" class="btn">Login or Sign Up!</a>
             </ul>
             {{/if}}
 
         </nav>
-
     </header>
-    <div class="container">
-        <main>
+
+    <main>
+        <div class="container">
             {{{ body }}}
-        </main>
-        <footer>
-            Thanks for visiting!
-        </footer>
-    </div>
+
+    </main>
+
+    <footer class="text-align-center">
+        <p>Thanks for visiting!</p>
+    </footer>
 
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>

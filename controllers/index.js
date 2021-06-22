@@ -5,7 +5,7 @@ const profileRoutes = require('./profile-routes');
 
 router.use('/api', apiRoutes);
 router.use('/', homeRoutes);
-router.use('/list', profileRoutes);
+router.use('/profile', profileRoutes);
 
 router.use((req, res) => {
     res.send("<h1>Wrong Route!</h1>")
