@@ -40,7 +40,7 @@ router.get('/', (req, res) => {
 });
 
 // get single list
-router.get('/list/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   List.findOne({
     where: {
       id: req.params.id

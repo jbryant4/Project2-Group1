@@ -7,6 +7,12 @@ const { Follower, List, ListContent, Movie, User, Comment, Vote } = require('../
 // get all posts for homepage
 router.get('/', (req, res) => {
     console.log('======================');
+
+    let totals = {}; 
+    User.count().then(count => {totals.user =  count});
+    List.count().then(count => {totals.list =  count});
+    Movie.count().then(count => {totals.movie = count});
+    
     List.findAll({
         attributes: [
             'id',
@@ -33,6 +39,7 @@ router.get('/', (req, res) => {
             const lists = dbListData.map(list => list.get({ plain: true }));
 
             res.render('homepage', {
+                totals,
                 lists,
                 loggedIn: req.session.loggedIn
             });
