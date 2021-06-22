@@ -30,6 +30,14 @@ Movie.init(
             type: DataTypes.STRING,
             allowNull: true,
         },
+        actors: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        poster: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
         year: {
             type: DataTypes.INTEGER,
             allowNull: true,
