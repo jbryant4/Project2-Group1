@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     User.count().then(count => {totals.user =  count});
     List.count().then(count => {totals.list =  count});
     Movie.count().then(count => {totals.movie = count});
-    
+
     List.findAll({
         attributes: [
             'id',
@@ -74,6 +74,9 @@ router.get('/list/:id', (req, res) => {
             {
                 model: User,
                 attributes: ['username']
+            },
+            {
+                model: Movie,
             }
         ]
     })
@@ -83,9 +86,10 @@ router.get('/list/:id', (req, res) => {
                 return;
             }
 
-            const post = dbListData.get({ plain: true });
+            const list = dbListData.get({ plain: true })
+            console.log(list)
 
-            res.render('single-list', {
+            res.render('listpage-public', {
                 list,
                 loggedIn: req.session.loggedIn
             });

@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 const { Follower, ListContent, Movie, User, Comment, Vote, List } = require('../models');
 // const withAuth = require('../utils/auth');
 
-// get all lists from profile page
+// load user profile
 router.get('/', (req, res) => {
   List.findAll({
     where: {
@@ -39,40 +39,27 @@ router.get('/', (req, res) => {
     });
 });
 
-// get single list
+// get single profile info
 router.get('/:id', (req, res) => {
-  List.findOne({
+  User.findOne({
+    attributes: { exclude: ['password'] },
     where: {
       id: req.params.id
     },
-    attributes: [
-      'id',
-      'title',
-      'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE list.id = vote.list_id)'), 'vote_count']
-    ],
     include: [
       {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'list_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
-      {
-        model: Movie,
-        attributes: ['id', 'movie_title']
+        model: List,
+        attributes: ['id', 'title', 'created_at']
       }
     ]
   })
-    .then(dbListData => {
-      if (dbListData) {
+    .then(dbUserData => {
+      if (dbUserData) {
         // serialize the data
-        const list = dbListData.get({ plain: true });
-
-        res.render('list-page', { //this file name has changed so this should also change
-          list,
+        const user = dbUserData.get({ plain: true });
+    
+        res.render('profile-page-public', { //this file name has changed so this should also change
+          user,
           loggedIn: true
       });
     } else {

@@ -4,7 +4,7 @@
 
         <div class="card" id="profileCard">
             <div class="card-body">
-                <h3>{{user.username}}</h3>
+                <h3>{{user.username}}'s Profile</h3>
                 {{!-- In a frenzy, I added this picture div in the profile page template. It's here and can be deleted in case we don't get to adding pics --}}
                 {{!-- <div class="row">
                     <div class="img mx-auto">
@@ -27,13 +27,13 @@
     <div class="col-8">
         <div class="card" id="listCard">
             <h3>User's Lists</h3>
-            <ol class="list-list">
-                {{#each lists as |list|}}
-                <li>
+            <div class="list-list">
+                {{#each user.lists as |list|}}
+                
                     {{> list-info list}}
-                </li>
+                
                 {{/each}}
-            </ol>
+        </div>
         </div>
     </div>
 
