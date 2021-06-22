@@ -71,7 +71,7 @@ router.get('/:id', (req, res) => {
         // serialize the data
         const list = dbListData.get({ plain: true });
 
-        res.render('list-page', {
+        res.render('list-page', { //this file name has changed so this should also change
           list,
           loggedIn: true
       });
