@@ -1,0 +1,65 @@
+main {
+    padding: 25px;
+}
+
+.navbar {
+    width: 100%;
+}
+
+h1, h3, nav a, button {
+    font-family: 'Bangers', cursive;
+}
+
+h1 {
+padding-left: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+    padding-right: 25px;
+}
+
+h3 {
+    text-align: center;
+    padding-top: 10px;
+}
+
+card {
+    border-radius: 16px;
+}
+
+.card-title {
+    text-align: center;
+    padding-top: 10px;
+}
+
+#user-list-count {
+    padding-top: 10px;
+}
+
+#welcomeCard {
+    width: 100%;
+    padding: 10px;
+}
+
+.list-list li a {
+    text-decoration: none;
+    font-family: default;
+}
+#loginSignup {
+    padding: 10px;
+}
+
+#popcorn {
+    width: 375px;
+    padding-top: 20px;
+    
+}
+
+#profilePic {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
