@@ -22,15 +22,15 @@ function movieSearch(data) {
                     }
                     console.log(movieObject);
                     return (movieObject);
-                   })
-                   .catch (err => {
+                })
+                .catch(err => {
                     console.log(err);
                     res.status(404).json({ message: 'No movie found with this title' });
 
-        });
+                });
 
 
-}
+        }
 
     });
 }

@@ -2,15 +2,15 @@
 
 <div class="row">
 
-<div class="col-3">
+<div class="col-7">
   <div class="card">
     <div class="card-header">
-      Likes
+      Likes: {{list.vote_count}}
     </div>
     <div class="card-body">
       <h5 class="card-title">Movie List</h5>
       {{!-- Loop through the movie list --}}
-      {{#each movies as |movie|}}
+      {{#each list.movies as |movie|}}
       {{!-- call the partials for each movie--}}
         {{> movie-info movie}}
       {{/each}}
@@ -18,11 +18,11 @@
   </div>
 </div>
 
-<div class="col-3">
+<div class="col-5">
   <div class="card">
     
     <div class="card-body">
-      {{#each comments as |comment| }}
+      {{#each list.comments as |comment| }}
       {{!-- List of comments  --}}
       {{> comments  comment}}
       {{/each}}
