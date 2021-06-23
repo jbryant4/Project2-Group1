@@ -95,7 +95,7 @@ router.get('/list/:id', (req, res) => {
             const list = dbListData.get({ plain: true })
             console.log(list)
 
-            res.render('listpage-user', {
+            res.render('listpage-public', {
                 list,
                 loggedIn: req.session.loggedIn
             });
@@ -145,7 +145,7 @@ router.get('/edit/:id', (req, res) => {
             const list = dbListData.get({ plain: true })
             console.log(list)
 
-            res.render('listpage_user', {
+            res.render('listpage-user', {
                 list,
                 loggedIn: req.session.loggedIn
             });
