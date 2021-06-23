@@ -37,10 +37,16 @@ router.get('/', (req, res) => {
     })
         .then(dbListData => {
             const lists = dbListData.map(list => list.get({ plain: true }));
+            const newList = [...lists]
+            const voted = newList.sort((a,b) => (a.vote_count > b.vote_count) ? -1 : 1)
+            
+            // console.log(lists)
+            // console.log(voted)
 
             res.render('homepage', {
                 totals,
                 lists,
+                voted,
                 loggedIn: req.session.loggedIn
             });
         })
