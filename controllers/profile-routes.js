@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 const { Follower, ListContent, Movie, User, Comment, Vote, List } = require('../models');
 // const withAuth = require('../utils/auth');
 
-// get all lists from profile page
+// load user profile
 router.get('/', (req, res) => {
   List.findAll({
     where: {
@@ -11,9 +11,9 @@ router.get('/', (req, res) => {
     },
     attributes: [
       'id',
-        'title',
-        'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE list.id = vote.list_id)'), 'vote_count']
+      'title',
+      'created_at',
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE list.id = vote.list_id)'), 'vote_count']
     ],
     order: [['created_at', 'DESC']],
     include: [
@@ -39,50 +39,53 @@ router.get('/', (req, res) => {
     });
 });
 
-// get single list
-router.get('/list/:id', (req, res) => {
-  List.findOne({
+// get single profile info
+router.get('/:id', (req, res) => {
+  User.findOne({
+    attributes: { exclude: ['password'] },
     where: {
       id: req.params.id
     },
-    attributes: [
-      'id',
-      'title',
-      'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE list.id = vote.list_id)'), 'vote_count']
-    ],
     include: [
       {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'list_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
+        model: List,
+        attributes: [
+          'id',
+          'title',
+          'created_at'
+        ],
+        include: [
+          {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'list_id', 'user_id', 'created_at'],
+          },
+        ]
       },
       {
-        model: Movie,
-        attributes: ['id', 'movie_title']
-      }
-    ]
-  })
-    .then(dbListData => {
-      if (dbListData) {
-        // serialize the data
-        const list = dbListData.get({ plain: true });
-
-        res.render('list-page', { //this file name has changed so this should also change
-          list,
-          loggedIn: true
+        model: List,
+        attributes: ['title'],
+        through: Vote,
+        as: 'voted_lists'
+      }]
+})
+  .then(dbUserData => {
+    if (dbUserData) {
+      // serialize the data
+      // const user = dbUserData.map(list => list.get({ plain: true }));
+      const user = dbUserData.get({ plain: true });
+      console.log(user);
+      res.render('profile-page-public', { //this file name has changed so this should also change
+        user,
+        loggedIn: true
       });
     } else {
       res.status(404).end();
-    } 
+    }
   })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 
