@@ -16,29 +16,22 @@
     </div>
 
     <div class="col">
-        <div class="card" id="listCard">
-            <h3>Current Recs</h3>
-            <ol class="list-list">
-                {{#each lists as |list|}}
-                <li>
-                    {{> list-info list}}
-                </li>
-                {{/each}}
-            </ol>
+        <h3>Current Recs</h3>
+        <div class="listCards">
+            {{#each lists as |list|}}
+            {{> list-info list}}
+            {{/each}}
         </div>
     </div>
 
     <div class="col">
-        <div class="card" id="mostLikedCard">
-            <h3>Top of the Pops!</h3>
-            <ol class="list-list">
-                {{#each lists as |list|}}
-                <li>
-                    {{> list-info list}}
-                </li>
-                {{/each}}
-            </ol>
+        <h3>Top of the Pops!</h3>
+        <div class="listCards">
+            {{#each lists as |list|}}
+            {{> list-info list}}
+            {{/each}}
         </div>
+
     </div>
 
 </div>
