@@ -2,26 +2,17 @@
 
 ## Idea name: myMovieList presented by Joseph Bryant
 ## USER STORY
-As a user i want to be able to create,compair and like custom movie list made by multiple users,
-So that i can see what everyone has been watching during quaintine.
+As a user i want to be able to create,compare and like custom movie list made by multiple users,
+So that i can see what everyone has been watching during quarantine.
 
 ### Setup Idea
 
 Make it so that users can search for a movie using a third party api(options below)
 
 #### movie api website
-https://www.themoviedb.org/settings/api
-this might be freaking awesome for the api
-https://github.com/grantholle/moviedb-promise
-
 http://www.omdbapi.com/
 
-free key gets 1000 a day
-
-this might be freaking awesome for the api
-https://github.com/grantholle/moviedb-promise
-
-Or if the user could not find the movie on the search they could add one to our db themselves
+The User can fetch a movie by title search.
 
 #### Models
 

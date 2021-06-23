@@ -24,10 +24,12 @@
             <ul>
                 <label for="userSearchForm">Search for a user</label>
                 <input type="text" id="user-search" />
-                <button type="submit" id="search-btn">Search!</button>
-                <a href="/profile" class="button" id="profPageNavLink">Profile Page</a>
-                <a class="button" href="/" id="moviesNavLink">Movies</a>
-                <a class="button" id="logout">logout</a>
+
+                <button id="userSearch" type="submit">Search!</button>
+                <a href="/profile" id="profPageNavLink">Profile Page</a>
+                <a href="/" id="moviesNavLink">Movies</a>
+                <a id="logout">logout</a>
+
             </ul>
             {{else}}
             <ul>
@@ -52,7 +54,9 @@
     </footer>
 
     {{#if loggedIn}}
+    
     <script src="/javascript/logout.js"></script>
+    <script src="/javascript/script.js"></script>
     
     {{/if}}
 </body>
