@@ -75,7 +75,6 @@ router.post('/', (req, res) => {
     // expects 
     List.create({
         title: req.body.title,
-        movie_list: req.body.list_url,
         user_id: req.session.user_id
     })
         .then(dbListData => res.json(dbListData))

@@ -30,8 +30,9 @@ router.get('/', (req, res) => {
     .then(dbListData => {
       // serialize data before passing to template
       const lists = dbListData.map(list => list.get({ plain: true }));
+      console.log(lists)
       // pass data to template
-      res.render('profile-page', { lists, loggedIn: true });
+      res.render('profilepage-user', { lists, loggedIn: true });
     })
     .catch(err => {
       console.log(err);

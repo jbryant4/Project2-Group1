@@ -19,7 +19,9 @@
         <h3>Current Recs</h3>
         <div class="listCards">
             {{#each lists as |list|}}
+            <div class="card recent-list-card">
             {{> list-info list}}
+            </div>
             {{/each}}
         </div>
     </div>
@@ -28,7 +30,9 @@
         <h3>Top of the Pops!</h3>
         <div class="listCards">
             {{#each voted as |list|}}
+            <div class="card recent-list-card">
             {{> list-info list}}
+            </div>
             {{/each}}
         </div>
 
