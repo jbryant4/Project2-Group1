@@ -25,7 +25,7 @@
             <ul>
                 <label for="userSearchForm">Search for a user</label>
                 <input type="text" id="user-search" />
-                <button type="submit">Search!</button>
+                <button id="userSearch" type="submit">Search!</button>
                 <a href="/profile" id="profPageNavLink">Profile Page</a>
                 <a href="/" id="moviesNavLink">Movies</a>
                 <a id="logout">logout</a>
@@ -52,6 +52,7 @@
 
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
+    <script src="/javascript/script.js"></script>
     {{/if}}
 </body>
 
