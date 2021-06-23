@@ -12,44 +12,44 @@
 </head>
 
 <body>
+    <nav class="navbar justify-content-between">
 
-    <header>
-        <nav class="navbar justify-content-between">
+        <h1>
+            <a href="/" id="title">My Movie List</a>
+        </h1>
 
-            <h1>
-                <a href="/" id="title">My Movie List</a>
-            </h1>
+        {{#if loggedIn}}
+        <ul>
+            <label for="userSearchForm">Search for a user</label>
+            <input type="text" id="user-search" />
+            <button type="submit" id="search-btn">Search!</button>
+            <a href="/profile" class="btn" id="profPageNavLink">Profile Page</a>
+            <a class="btn" href="/" id="moviesNavLink">Movies</a>
+            <a class="btn" id="logout">logout</a>
+        </ul>
+        {{else}}
+        <ul>
+            {{!-- I'm assuming here for `listPageBtn` we'll just send the user home if they're not logged in
+            --}}
+            <a href="/" class="btn">Movies</a>
+            <a href="/login" class="btn">Login or Sign Up!</a>
+        </ul>
+        {{/if}}
 
-            {{#if loggedIn}}
-            <ul>
-                <label for="userSearchForm">Search for a user</label>
-                <input type="text" id="user-search" />
-                <button type="submit" id="search-btn">Search!</button>
-                <a href="/profile" class="button" id="profPageNavLink">Profile Page</a>
-                <a class="button" href="/" id="moviesNavLink">Movies</a>
-                <a class="button" id="logout">logout</a>
-            </ul>
-            {{else}}
-            <ul>
-                {{!-- I'm assuming here for `listPageBtn` we'll just send the user home if they're not logged in
-                --}}
-                <a href="/" class="btn">Movies</a>
-                <a href="/login" class="btn">Login or Sign Up!</a>
-            </ul>
-            {{/if}}
+    </nav>
+    <div class="container-fluid">
 
-        </nav>
-    </header>
+        <main>
+            <div class="d-flex justify-content-around">
+                {{{ body }}}
+            </div>
+        </main>
 
-    <main>
-        <div class="container">
-            {{{ body }}}
 
-    </main>
-
-    <footer class="text-align-center">
-        <p>Thanks for visiting!</p>
-    </footer>
+        <footer class="mt-auto">
+            <p>Thanks for visiting!</p>
+        </footer>
+    </div>
 
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
