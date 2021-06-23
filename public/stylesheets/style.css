@@ -1,9 +1,28 @@
-main {
-    padding: 25px;
+:root {
+    --primary-color: #222831;
+    --secondary-color: #393E46;
+    --tertiary-color: #B55400;
+    --quaternary-color: #EEEEEE;
 }
 
-.navbar {
-    width: 100%;
+body {
+background: linear-gradient(to bottom, var(--tertiary-color) 35%, var(--quaternary-color) 100%);;
+}
+
+main {
+    margin-top: 10px;
+    margin-bottom: 110px;
+}
+
+#title {
+    font-size: 48px;
+    text-decoration: none;
+    color: var(--tertiary-color);
+}
+
+nav {
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
 }
 
 h1, h3, nav a, button {
@@ -24,10 +43,60 @@ nav a {
 h3 {
     text-align: center;
     padding-top: 10px;
+    color: var(--primary-color));
 }
 
-card {
-    border-radius: 16px;
+.btn {
+    border: 2px solid currentColor;
+    border-radius: 3rem;
+    color: var(--tertiary-color);
+    font-family: 'Bangers', cursive;
+    font-weight: 100;
+    overflow: hidden;
+    padding: 0.75rem 1.5rem;
+    position: relative;
+    text-decoration: none;
+    transition: .2s transform ease-in-out;
+    will-change: transform;
+    z-index: 0;
+}
+
+.btn::after {
+    background-color: var(--secondary-color);
+    border-radius: 3rem;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-100%, 0) rotate(10deg);
+    transform-origin: top left;
+    transition: .2s transform ease-out;
+    will-change: transform;
+    z-index: -1;
+}
+
+.btn:hover::after {
+    transform: translate(0, 0);
+}
+
+.btn:hover {
+    border: 2px solid transparent;
+    color: var(--tertiary-color);
+    transform: scale(1.05);
+    will-change: transform;
+}
+
+.card {
+    border-radius: .75REM;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: var(--secondary-color);
+    text-decoration: none;
+    color: var(--quaternary-color);
+    box-shadow: -5px 5px 10px var(--primary-color);
 }
 
 .card-title {
@@ -39,17 +108,12 @@ card {
     padding-top: 10px;
 }
 
-#welcomeCard {
-    width: 100%;
+#loginSignup {
     padding: 10px;
 }
 
-.list-list li a {
-    text-decoration: none;
-    font-family: default;
-}
-#loginSignup {
-    padding: 10px;
+#welcomeCard {
+    width: 500px;
 }
 
 #popcorn {

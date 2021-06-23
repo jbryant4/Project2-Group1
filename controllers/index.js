@@ -8,7 +8,6 @@ router.use('/api', apiRoutes);
 router.use('/', homeRoutes);
 router.use('/profile', profileRoutes);
 
-
 router.use((req, res) => {
     res.send("<h1>Wrong Route!</h1>")
 });
