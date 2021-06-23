@@ -1,0 +1,48 @@
+<div class="row d-flex justify-content-around">
+
+    <div class="col-3">
+
+        <div class="card" id="newList">
+            <div class="card-body">
+                <h3>Create a new list</h3>
+                <br />
+                <input type="text" id="new-list" placeholder="Enter a new list" />  
+                <br />
+                <button type="submit" id="search-btn">Add!</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-8">
+        <div class="card" id="listCard">
+            <h3>User's Lists</h3>
+            <ol class="list-list">
+                {{#each lists as |list|}}
+                <li>
+                    {{> list-info list}}
+                </li>
+                {{/each}}
+            </ol>
+        </div>
+    </div>
+
+    <div class="col-3">
+
+        <div class="card" id="following">
+            <div class="card-body">
+                <h3>Following:</h3>
+                <br />
+                <ul>
+                  <li><a href=""></a></li>
+                  <li><a href=""></a></li>
+                  <li><a href=""></a></li>
+                  <li><a href=""></a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
