@@ -5,6 +5,30 @@ const withAuth = require('../utils/auth');
 
 // load user profile
 router.get('/', withAuth, (req, res) => {
+  let follower = {};
+  User.findOne({
+    where: {
+      id: req.session.user_id
+    },
+    attributes:['username'],
+    include: [{
+      model: User,
+      attributes:['id','username'],
+      through: Follower,
+      as: 'follower_list'
+    }]
+  })
+  .then(dbFollowData => {
+    // serialize data before passing to template
+    const following = dbFollowData.get({ plain: true });
+    follower = following;
+    console.log(follower)
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+
   List.findAll({
     where: {
       user_id: req.session.user_id
@@ -32,7 +56,7 @@ router.get('/', withAuth, (req, res) => {
       const lists = dbListData.map(list => list.get({ plain: true }));
       console.log(lists)
       // pass data to template
-      res.render('profilepage-user', { lists, loggedIn: true });
+      res.render('profilepage-user', { lists, follower, loggedIn: true });
     })
     .catch(err => {
       console.log(err);
@@ -68,25 +92,25 @@ router.get('/:id', withAuth, (req, res) => {
         through: Vote,
         as: 'voted_lists'
       }]
-})
-  .then(dbUserData => {
-    if (dbUserData) {
-      // serialize the data
-      // const user = dbUserData.map(list => list.get({ plain: true }));
-      const user = dbUserData.get({ plain: true });
-      console.log(user);
-      res.render('profilepage-public', { //this file name has changed so this should also change
-        user,
-        loggedIn: true
-      });
-    } else {
-      res.status(404).end();
-    }
   })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .then(dbUserData => {
+      if (dbUserData) {
+        // serialize the data
+        // const user = dbUserData.map(list => list.get({ plain: true }));
+        const user = dbUserData.get({ plain: true });
+        console.log(user);
+        res.render('profilepage-public', { //this file name has changed so this should also change
+          user,
+          loggedIn: true
+        });
+      } else {
+        res.status(404).end();
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 

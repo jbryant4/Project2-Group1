@@ -23,8 +23,8 @@
 
             {{#if loggedIn}}
             <ul>
-                <label for="userSearchForm">Search for a user</label>
-                <input type="text" id="user-search" />
+                <label for="userSearchForm" id='search-err'></label>
+                <input type="text" id="user-search" placeholder="User Search" />
 
                 <button id="userSearch" type="submit">Search!</button>
                 <a href="/profile" id="profPageNavLink">Profile Page</a>

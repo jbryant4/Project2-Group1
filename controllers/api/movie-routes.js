@@ -46,7 +46,10 @@ router.post('/', withAuth, (req, res) => {
             movie_title: req.body.movie_title,
             description: req.body.description,
             genre: req.body.genre,
-            year: req.body.year
+            actors: req.body.actors,
+            poster: req.body.poster,
+            year: req.body.year,
+
         })
             .then(dbMoviesData => res.json(dbMoviesData))
             .catch(err => {

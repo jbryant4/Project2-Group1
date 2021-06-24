@@ -22,9 +22,17 @@ List.belongsTo(User, {
 // user has many users
 User.belongsToMany(User, {
     through: Follower,
-    as: 'follow_list',
+    as: 'follower_list',
 
     foreignKey: 'user_id',
+    onDelete: 'SET NULL'
+});
+
+User.belongsToMany(User, {
+    through: Follower,
+    as: 'follow_list',
+
+    foreignKey: 'follow_id',
     onDelete: 'SET NULL'
 });
 

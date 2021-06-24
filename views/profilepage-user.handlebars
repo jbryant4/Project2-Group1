@@ -1,6 +1,6 @@
 <div class="row">
 
-    <div class="col-3">
+    <div class="col-4">
 
         <div class="card col-12" id="newList">
             <div class="card-body">
@@ -17,17 +17,16 @@
                 <h3>Following:</h3>
                 <br />
                 <ul>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
+                    {{#each follower.follower_list as |follower|}}
+                    <li><a href="/profile/{{id}}">{{username}}</a></li>
+                    {{/each}}
                 </ul>
             </div>
         </div>
 
     </div>
 
-    <div class="col-6">
+    <div class="col-7">
         <div class="card" id="listCard">
             <h3>My Movie Lists</h3>
             <div class="list-list">
