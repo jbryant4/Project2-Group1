@@ -5,21 +5,33 @@
     --quaternary-color: #EEEEEE;
 }
 
-html {
+*, html, body {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-image: linear-gradient(0deg, var(--quaternary-color), var(--tertiary-color));
+    background-repeat: no-repeat;
+    margin: 0;
     height: 100%;
     width: auto;
 }
 
-body {
-    box-sizing: border-box;
-    background-image: linear-gradient(0deg, var(--tertiary-color), var(--quaternary-color));
-    background-repeat: no-repeat;
-    margin: 0 25px;
+#homepageContainer div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10px 5px;
+    align-items: space-between;
+    
 }
 
 main {
-    margin-top: 10px;
-    margin-bottom: 110px;
+    /* display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 10px; */
 }
 
 #title {
@@ -28,10 +40,27 @@ main {
     color: var(--tertiary-color);
 }
 
-nav {
+.navbar { 
+    display: flex;
     background-color: var(--primary-color);
     color: var(--tertiary-color);
+}
+
+main {
+    display: flex;
+    flex-direction: row;
     width: 100%;
+
+}
+
+label {
+    font-family: 'Bangers', cursive;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+#search-btn {
+    margin: 0 10px;
 }
 
 h1, h3, nav a, button {
@@ -113,13 +142,19 @@ h3 {
     padding-top: 10px;
 }
 
-#user-list-count {
+#user-list-count, #loginSignup {
     padding-top: 10px;
 }
 
-#loginSignup {
-    padding: 10px;
+#hugCard {
+    display: flex;
 }
+
+#currentRecs {
+    display: flex;
+
+}
+
 
 #welcomeCard {
     width: 500px;
@@ -137,20 +172,57 @@ h3 {
     border-radius: 50%;
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
-    height: 50px;
-    text-align: center;
+#ten33 {
+    visibility: hidden;
 }
 
-@media screen and (max-width: 767px) {
+
+footer {
+
+    padding: 40px 35px;
+    text-align: center;
+    color: var(--quaternary-color);
+    font-size: 20px;
+}
+
+/* @media screen and (max-width: 1033px) {
     
-    body {
-        background-color: var(--tertiary-color);
+    #hugCard {
+        visibility: hidden;
     }
     
     footer {
         position: relative;
     }
 }
+
+@media screen and (max-width: 770px) {
+    
+    html {
+        background-color: var(--tertiary-color);
+    }
+
+    #hugCard {
+        visibility: hidden;
+    }
+    
+    footer {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    
+    #ten33 {
+        visibility: visible;
+    }
+    
+    html {
+        background-color: var(--tertiary-color);
+    }
+
+    
+    footer {
+        position: relative;
+    }
+} */

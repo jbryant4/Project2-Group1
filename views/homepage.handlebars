@@ -1,39 +1,35 @@
-<div class="row">
-    <div class="col col-md-2">
-        <div class="card text-center" id="hugCard">
-            <div class="card-body">
-                <h3>Help Us Grow!</h3>
-                <p id="user-count">Total Users:</p>
-                <p id="list-count">Total Lists:</p>
-                <p id="movies-count">Total Movies:</p>
+<div class="flex-container" id="homepageContainer">
+    <div class="flex-row">
+
+        <div class="flex-item" id="hugCard">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h3>Help Us Grow!</h3>
+                    <p id="user-count">Total Users:</p>
+                    <p id="list-count">Total Lists:</p>
+                    <p id="movies-count">Total Movies: 1000000</p>
+                </div>
             </div>
-
-
-        </div>
-    </div>
-
-
-
-
-    <div class="col col-md-4">
-        <h3>Current Recs</h3>
-        <div class="listCards">
-            {{#each lists as |list|}}
-            {{> list-info list}}
-            {{/each}}
-        </div>
-    </div>
-
-
-
-    <div class="col col-md-4">
-        <h3>Top of the Pops!</h3>
-        <div class="listCards">
-            {{#each lists as |list|}}
-            {{> list-info list}}
-            {{/each}}
         </div>
 
+
+        <div class="flex-item" id="currentRecs">
+            <h3>Current Recs</h3>
+            <div class="listCards">
+                {{#each lists as |list|}}
+                {{> list-info list}}
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="flex-item" id="pops">
+            <h3>Top of the Pops!</h3>
+            <div class="listCards">
+                {{#each lists as |list|}}
+                {{> list-info list}}
+                {{/each}}
+            </div>
+        </div>
     </div>
 
 </div>
