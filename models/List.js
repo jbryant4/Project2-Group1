@@ -14,7 +14,7 @@ class List extends Model {
                 },
                 attributes: [
                     'id',
-                    'list_url',
+                    // 'list_url',
                     'title',
                     'created_at',
                     [

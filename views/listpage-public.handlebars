@@ -6,6 +6,7 @@
   <div class="card">
     <div class="card-header">
       Likes: {{list.vote_count}}
+      <button type="button" class="upvote-btn" ><i class="far fa-thumbs-up up-vote" value={{list.vote_count}}></i></button>
     </div>
     <div class="card-body">
       <h5 class="card-title">Movie List</h5>
@@ -28,12 +29,14 @@
       {{/each}}
       </div>
       <div>
-        <input type="text" placeholder="Leave a comment" />
+        {{!-- <input type="text" placeholder="Leave a comment" /> --}}
+        <textarea name="comment-body" placeholder="Leave a comment"></textarea>
+        <br />
         <button type="submit" id="comment-btn">Comment</button>
       </div>
   </div>
 
 </div>
-
+<script src="../javascript/upvote.js"></script>
 
 </div>

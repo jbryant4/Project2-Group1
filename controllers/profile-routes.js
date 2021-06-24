@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Follower, ListContent, Movie, User, Comment, Vote, List } = require('../models');
-// const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth');
 
 // load user profile
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
   List.findAll({
     where: {
       user_id: req.session.user_id
@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
       // serialize data before passing to template
       const lists = dbListData.map(list => list.get({ plain: true }));
       // pass data to template
-      res.render('profile-page', { lists, loggedIn: true });
+      res.render('profilepage-user', { lists, loggedIn: true });
     })
     .catch(err => {
       console.log(err);
@@ -40,7 +40,7 @@ router.get('/', (req, res) => {
 });
 
 // get single profile info
-router.get('/:id', (req, res) => {
+router.get('/:id', withAuth, (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
     where: {
@@ -74,7 +74,7 @@ router.get('/:id', (req, res) => {
       // const user = dbUserData.map(list => list.get({ plain: true }));
       const user = dbUserData.get({ plain: true });
       console.log(user);
-      res.render('profile-page-public', { //this file name has changed so this should also change
+      res.render('profilepage-public', { //this file name has changed so this should also change
         user,
         loggedIn: true
       });

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 // const sequelize = require('../../config/connection');
 const { Movie, List } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
     Movie.findAll({})
@@ -31,7 +32,7 @@ router.get('/:id', (req, res) => {
         });
 });
 
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     // check the session
     if (req.session) {
         Movie.create({
@@ -48,7 +49,7 @@ router.post('/', (req, res) => {
     }
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Movie.destroy({
         where: {
             id: req.params.id
