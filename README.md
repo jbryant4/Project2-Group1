@@ -6,6 +6,7 @@ As a user i want to be able to create,compare and like custom movie list made by
 So that i can see what everyone has been watching during quarantine.
 
 ### Setup 
+clone the repo, navigate to the root folder, run the following commands
 Npm Install
 run schema in mySQL
 NPM run seed
@@ -34,7 +35,9 @@ The User can fetch a movie by title search.
 ## Link to walk thru video of application
 *TBD* https://drive.google.com/file/d/1-sClX_XSzxjUN0bqx11MJP5_2B15LFij/view
 
-## Screenshots of tests
+
+
+## Screenshots of app
 ![](./assets/images/screenshots/tbd.png)
 ![](./assets/images/screenshots/tbd.png)
 ![](./assets/images/screenshots/tbd.png)
