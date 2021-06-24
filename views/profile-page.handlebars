@@ -1,39 +1,36 @@
-<div class="row d-flex justify-content-around">
+<div class="flex-container" id="profileContainer">
 
-    <div class="col-3">
+    <div class="flex-row" id="followUserCard">
 
         <div class="card" id="profileCard">
             <div class="card-body">
-                <h3>{{user.username}}</h3>
-                {{!-- In a frenzy, I added this picture div in the profile page template. It's here and can be deleted in case we don't get to adding pics --}}
-                {{!-- <div class="row">
-                    <div class="img mx-auto">
-                        <img src="/images/steve.jpg" id="profilePic" class="mx-auto" />
-                    </div>
-                </div> --}}
-                
-                {{!-- <p id="user-list-count" class="text-center">Total Lists: <span id="userListNumber"></span></p> --}}
-                <div class="follow-btns text-center">
-                    {{!-- If not following--}}
-                    <button id="follow" class="btn">Follow!</button>
-                    {{!-- If following--}}
-                    <button id="unfollow" class="btn">Unfollow!</button>
+
+                <div class="card-header" id="usernameToFollow">
+                    <h3>{{user.username}}</h3>
                 </div>
+
+                <div class="follow-btns">
+                    {{!-- If not following--}}
+                    <button id="follow" class="btn">Follow</button>
+                    {{!-- If following--}}
+                    <button id="unfollow" class="btn">Unfollow</button>
+                </div>
+
             </div>
         </div>
-
     </div>
 
-    <div class="col-8">
-        <div class="card" id="listCard">
-            <h3>User's Lists</h3>
-            <ol class="list-list">
-                {{#each lists as |list|}}
-                <li>
+
+    <div class="flex-row" id="userListsCard">
+        <div>
+            <div class="card" id="listCard">
+                <h3>User's Lists</h3>
+                <div class="listCards">
+                    {{#each lists as |list|}}
                     {{> list-info list}}
-                </li>
-                {{/each}}
-            </ol>
+                    {{/each}}
+                </div>
+            </div>
         </div>
     </div>
 

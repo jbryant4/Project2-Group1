@@ -5,11 +5,6 @@
     --quaternary-color: #EEEEEE;
 }
 
-html {
-    height: 100%;
-    width: auto;
-}
-
 body {
     box-sizing: border-box;
     background-image: linear-gradient(0deg, var(--tertiary-color), var(--quaternary-color));
@@ -17,9 +12,27 @@ body {
     margin: 0 25px;
 }
 
+nav {    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+}
+
+nav h1, nav form {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav form {
+    margin: 10px 0;
+}
+
 main {
     margin-top: 10px;
-    margin-bottom: 110px;
+    margin-bottom: 520px;
 }
 
 #title {
@@ -28,25 +41,29 @@ main {
     color: var(--tertiary-color);
 }
 
-nav {
-    background-color: var(--primary-color);
-    color: var(--tertiary-color);
-    width: 100%;
-}
 
 h1, h3, nav a, button {
     font-family: 'Bangers', cursive;
 }
 
-h1 {
-padding-left: 25px;
-}
+
 
 nav a {
     text-decoration: none;
     color: black;
     font-size: 24px;
     padding-right: 25px;
+}
+
+#loggedInNavBtns {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#loggedOutNavBtns {
+    display: flex;
+    align-items: space-evenly;
+    
 }
 
 h3 {
@@ -98,6 +115,21 @@ h3 {
     will-change: transform;
 }
 
+#homepageContainer {
+    justify-content:space-evenly;
+}
+
+#homepageContainer, #profileContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#userListsCard {
+    width: 60%;
+}
+
 .card {
     border-radius: .75REM;
     margin-top: 10px;
@@ -113,6 +145,9 @@ h3 {
     padding-top: 10px;
 }
 
+#usernameToFollow, .follow-btns, #userListsCard {
+    margin: 10px;
+}
 #user-list-count {
     padding-top: 10px;
 }
@@ -138,19 +173,135 @@ h3 {
 }
 
 footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
     height: 50px;
     text-align: center;
 }
 
-@media screen and (max-width: 767px) {
-    
-    body {
-        background-color: var(--tertiary-color);
+/* Profile Page */
+#profileContainer {
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+}
+
+#profileCard {
+    display:flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 1150px) {
+    #recsList {
+    padding: 12px;
+    order: 1;
+    flex-basis: 50%;
+    }
+
+    #pops {
+    padding: 12px;
+    order: 2;
+    flex-basis: 50%;
+    }
+
+    #hugCard {
+    padding: 12px;
+    order: 3;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    #loggedInNavBtns {
+        flex-basis: 100%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    #profileContainer .follow-btns {
+        order: 1;
+        flex-basis: 100%;
+    }
+
+    #userListsCard {
+        order: 2;
+        flex-basis: 100%;
+    }
+
+
+}
+
+@media screen and (max-width: 710px) {
+    nav {
+        justify-content: space-evenly;
     }
     
-    footer {
-        position: relative;
+    nav h1 {
+        order: 1;
+        flex-basis: 100%;
+    }
+
+    nav form {
+        order: 2;
+        flex-basis: 100%;
+        margin: 10px 0;
+    }
+
+    #loggedInNavBtns {
+        order: 3;
+        flex-basis: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    
+    nav h1 {
+        order: 1;
+        flex-basis: 100%;
+    }
+    nav form {
+        order: 2;
+        flex-basis: 100%;
+    }
+
+    .navbar #title, .navbar form {
+        justify-content: center;
+    }
+
+    nav #loggedInNavBtns {
+        order: 3;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #homepageContainer {
+        margin: 0 50px;
+    }
+    
+    #recsList {
+    padding: 12px;
+    order: 1;
+    flex-basis: 100%;
+    }
+
+    #pops {
+    padding: 12px;
+    order: 2;
+    flex-basis: 100%;
+    }
+
+    #hugCard {
+    padding: 12px;
+    order: 3;
+    }
+
+    nav form #search-btn {
+    }
+}
+
+
+@media screen and (max-width: 460px) {
+    nav form #search-btn {
+    order: 1;
     }
 }
