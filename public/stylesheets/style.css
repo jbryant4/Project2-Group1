@@ -145,6 +145,15 @@ h3 {
     padding-top: 10px;
 }
 
+.user-pro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.comment-username {
+    font-weight: bold;
+    color: var(--tertiary-color);
+}
 #comment-text2 {
     border-bottom-style: groove;
     border-width: 5px;
