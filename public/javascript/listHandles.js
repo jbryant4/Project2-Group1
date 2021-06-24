@@ -1,6 +1,6 @@
 async function addListHandler(event) {
     event.preventDefault();
-
+console.log('hi')
     const title = document.querySelector('#new-list').value.trim();
     
 

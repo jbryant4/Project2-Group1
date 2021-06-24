@@ -27,5 +27,5 @@ async function searchUser(event) {
     }
 }
 
-document.querySelector('#userSearch').addEventListener('click', searchUser);
+document.querySelector('#usersearch-btn').addEventListener('click', searchUser);
 
