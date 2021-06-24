@@ -17,10 +17,9 @@
                 <h3>Following:</h3>
                 <br />
                 <ul>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
-                    <li><a href=""></a></li>
+                    {{#each follower.follower_list as |follower|}}
+                    <li><a href="/profile/{{id}}">{{username}}</a></li>
+                    {{/each}}
                 </ul>
             </div>
         </div>
