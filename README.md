@@ -31,6 +31,7 @@ The User can fetch a movie by title search.
 * HTML
 * bcrypt
 * dotenv
+* node-fetch
 
 ### Link to walk thru video of app presentation
 https://drive.google.com/file/d/1M-r_vRbuwJU7QjoXV_Mjj-nc4GrljMeK/view
