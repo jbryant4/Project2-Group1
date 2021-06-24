@@ -1,6 +1,14 @@
 const router = require('express').Router();
 const { ListContent } = require('../../models');
-const withAuth = require('../../utils/auth');
+// const withAuth = require('../../utils/auth');
+router.get('/', (req,res) =>{
+    ListContent.findAll()
+    .then(dbListCData => res.json(dbListCData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
 router.post('/', (req, res) => {
     // check the session
@@ -21,8 +29,7 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
     ListContent.destroy({
         where: {
-            list_id: req.body.list_id,
-            movie_id:req.body.movie_id
+            id: req.params.id,
         }
     })
         .then(dbCommentData => {

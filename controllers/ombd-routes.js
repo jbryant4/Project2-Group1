@@ -5,7 +5,7 @@ const apiKey = process.env.DB_APIKEY;
 
 
 router.get('/:movie',(req, res) => {
-    console.log(apiKey, req.params.movie)
+    // console.log(apiKey, req.params.movie)
     const movieUrl = "http://www.omdbapi.com/?t=" + req.params.movie + "&apikey=" + apiKey;
     fetch(movieUrl).then(function (response) {
         if (response.ok) {
@@ -20,7 +20,7 @@ router.get('/:movie',(req, res) => {
                     poster: data.Poster,
                     year: data.Year
                 }
-                console.log(movieObject);
+                // console.log(movieObject);
                 res.json(movieObject);
             })
             .catch(err => {

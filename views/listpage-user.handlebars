@@ -16,16 +16,19 @@
 
 
   <div class="col-7">
-    <div class="card">
+    <div class="card ">
       <div class="card-header">
         Likes: {{list.vote_count}}
       </div>
       <div class="card-body">
         <h5 class="card-title">Movie List</h5>
         {{!-- Loop through the movie list --}}
-        {{#each movies as |movie|}}
+        {{#each list.movies as |movie|}}
+        <div class="row movie-card" >
         {{!-- call the partials for each movie--}}
         {{> movie-info movie}}
+        <button type="submit" class="dlt-btn" movie='{{movie.listcontent.id}}'>Remove Movie</button>
+        </div>
         {{/each}}
       </div>
       <div class="movie-info"></div>
