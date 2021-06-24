@@ -5,12 +5,12 @@
 As a user, I want to be able to create, compare and like custom movie lists; made by multiple users, so that I can see what everyone has been watching during quarantine.
 
 ### Setup 
-* clone the repo, navigate to the root folder
-* run the following commands
+Clone the repo, navigate to the root folder,  run the following commands:
 * Npm Install
-* run schema in mySQL
+* run schema in mySQL 
 * NPM run seed
 * go to localhost:3001
+NOTE: Deployed link below
 
 #### Movie API
 http://www.omdbapi.com/
