@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Follower, ListContent, Movie, User, Comment, Vote, List } = require('../models');
-// const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth');
 
 // load user profile
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
   List.findAll({
     where: {
       user_id: req.session.user_id
@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
 });
 
 // get single profile info
-router.get('/:id', (req, res) => {
+router.get('/:id', withAuth, (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
     where: {
