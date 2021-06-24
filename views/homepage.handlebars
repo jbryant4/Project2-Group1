@@ -5,9 +5,9 @@
         <div class="card text-center">
             <div class="card-body">
                 <h3>Help Us Grow!</h3>
-                <p id="user-count">Total Users:</p>
-                <p id="list-count">Total Lists:</p>
-                <p id="movies-count">Total Movies:</p>
+                <p id="user-count">Total Users: {{totals.user}}</p>
+                <p id="list-count">Total Lists: {{totals.list}}</p>
+                <p id="movies-count">Total Movies: {{totals.movie}}</p>
             </div>
         </div>
 
@@ -20,7 +20,9 @@
 
         <div class="listCards">
             {{#each lists as |list|}}
+            <div class="card recent-list-card">
             {{> list-info list}}
+            </div>
             {{/each}}
         </div>
         
@@ -32,8 +34,10 @@
     <div class="flex-row" id="pops">
         <h3>Top of the Pops!</h3>
         <div class="listCards">
-            {{#each lists as |list|}}
+            {{#each voted as |list|}}
+            <div class="card recent-list-card">
             {{> list-info list}}
+            </div>
             {{/each}}
         </div>
     </div>

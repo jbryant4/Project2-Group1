@@ -1,0 +1,40 @@
+{{!-- this is the list page displayed when you are viewing your own list page --}}
+
+<div class="row">
+
+  <div class="col-4">
+    <div class="card">
+
+      <div class="card-body">
+        <label>Search for movie by title</label>
+        <input type="text" id="search-movie" placeholder="Enter title of a movie" />
+        <br />
+        <button type="submit" id="search-btn">Search</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-7">
+    <div class="card ">
+      <div class="card-header">
+        Likes: {{list.vote_count}}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Movie List</h5>
+        {{!-- Loop through the movie list --}}
+        {{#each list.movies as |movie|}}
+        <div class="row movie-card" >
+        {{!-- call the partials for each movie--}}
+        {{> movie-info movie}}
+        <button type="submit" class="dlt-btn" movie='{{movie.listcontent.id}}'>Remove Movie</button>
+        </div>
+        {{/each}}
+      </div>
+      <div class="movie-info"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="/javascript/movieHandles.js"></script>

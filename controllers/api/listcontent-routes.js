@@ -1,26 +1,22 @@
 const router = require('express').Router();
-const { Comment } = require('../../models');
-const withAuth = require('../../utils/auth');
-
-// get all comments
-router.get('/', (req, res) => {
-    Comment.findAll()
-        .then(dbCommentData => res.json(dbCommentData))
+const { ListContent } = require('../../models');
+// const withAuth = require('../../utils/auth');
+router.get('/', (req,res) =>{
+    ListContent.findAll()
+    .then(dbListCData => res.json(dbListCData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
 });
 
-// post a comment
-router.post('/', withAuth, (req, res) => {
+router.post('/', (req, res) => {
     // check the session
     if (req.session) {
         // expects => {comment_text: "This is the comment", user_id: 1, post_id: 2}
-        Comment.create({
-            comment_text: req.body.comment_text,
-            user_id: req.session.user_id,
-            list_id: req.body.list_id
+        ListContent.create({
+            list_id: req.body.list_id,
+            movie_id: req.body.movie_id
         })
             .then(dbCommentData => res.json(dbCommentData))
             .catch(err => {
@@ -30,11 +26,10 @@ router.post('/', withAuth, (req, res) => {
     }
 });
 
-// delete a comment
-router.delete('/:id', withAuth, (req, res) => {
-    Comment.destroy({
+router.delete('/:id', (req, res) => {
+    ListContent.destroy({
         where: {
-            id: req.params.id
+            id: req.params.id,
         }
     })
         .then(dbCommentData => {
@@ -50,7 +45,4 @@ router.delete('/:id', withAuth, (req, res) => {
         });
 });
 
-module.exports = router;
-
-
-
+module.exports = router

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { List, User, Comment, Vote, Movie } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 
 // get all lists
@@ -71,11 +72,10 @@ router.get('/:id', (req, res) => {
         });
 });
 
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     // expects 
     List.create({
         title: req.body.title,
-        movie_list: req.body.list_url,
         user_id: req.session.user_id
     })
         .then(dbListData => res.json(dbListData))
@@ -85,9 +85,11 @@ router.post('/', (req, res) => {
         });
 });
 //HEY JOEY DOUBLE CHECK THIS LATER
-router.put('/upvote', (req, res) => {
+router.put('/upvote', withAuth, (req, res) => {
     //session exists
     if (req.session) {
+
+        console.log("Upvote", req.body);
         // custom static method created in models/List.js
         List.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
             .then(updatedVoteData => res.json(updatedVoteData))
@@ -98,7 +100,7 @@ router.put('/upvote', (req, res) => {
     }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     List.update(
         {
             title: req.body.title
@@ -122,7 +124,7 @@ router.put('/:id', (req, res) => {
         });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     List.destroy({
         where: {
             id: req.params.id

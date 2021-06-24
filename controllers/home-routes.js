@@ -7,6 +7,12 @@ const { Follower, List, ListContent, Movie, User, Comment, Vote } = require('../
 // get all posts for homepage
 router.get('/', (req, res) => {
     console.log('======================');
+
+    let totals = {}; 
+    User.count().then(count => {totals.user =  count});
+    List.count().then(count => {totals.list =  count});
+    Movie.count().then(count => {totals.movie = count});
+
     List.findAll({
         attributes: [
             'id',
@@ -31,9 +37,16 @@ router.get('/', (req, res) => {
     })
         .then(dbListData => {
             const lists = dbListData.map(list => list.get({ plain: true }));
+            const newList = [...lists]
+            const voted = newList.sort((a,b) => (a.vote_count > b.vote_count) ? -1 : 1)
+            
+            // console.log(lists)
+            // console.log(voted)
 
             res.render('homepage', {
+                totals,
                 lists,
+                voted,
                 loggedIn: req.session.loggedIn
             });
         })
@@ -45,6 +58,57 @@ router.get('/', (req, res) => {
 
 // get single post
 router.get('/list/:id', (req, res) => {
+    List.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: [
+            'id',
+            'title',
+            'user_id',
+            'created_at',
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE list.id = vote.list_id)'), 'vote_count']
+        ],
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'list_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username']
+            },
+            {
+                model: Movie,
+            }
+        ]
+    })
+        .then(dbListData => {
+            if (!dbListData) {
+                res.status(404).json({ message: 'No list found with this id' });
+                return;
+            }
+
+            const list = dbListData.get({ plain: true })
+            console.log(list)
+
+            res.render('listpage-public', {
+                list,
+                loggedIn: req.session.loggedIn
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+//edit your post 
+router.get('/edit/:id', (req, res) => {
     List.findOne({
         where: {
             id: req.params.id
@@ -67,6 +131,9 @@ router.get('/list/:id', (req, res) => {
             {
                 model: User,
                 attributes: ['username']
+            },
+            {
+                model: Movie,
             }
         ]
     })
@@ -76,9 +143,10 @@ router.get('/list/:id', (req, res) => {
                 return;
             }
 
-            const post = dbListData.get({ plain: true });
+            const list = dbListData.get({ plain: true })
+            console.log(list)
 
-            res.render('single-list', {
+            res.render('listpage-user', {
                 list,
                 loggedIn: req.session.loggedIn
             });

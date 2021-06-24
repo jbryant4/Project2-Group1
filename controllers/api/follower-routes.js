@@ -1,26 +1,37 @@
 const router = require('express').Router();
-const { Comment } = require('../../models');
-const withAuth = require('../../utils/auth');
-
-// get all comments
-router.get('/', (req, res) => {
-    Comment.findAll()
-        .then(dbCommentData => res.json(dbCommentData))
+const { Follower } = require('../../models');
+// const withAuth = require('../../utils/auth');
+router.get('/', (req,res) =>{
+    Follower.findAll()
+    .then(dbListCData => res.json(dbListCData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
 });
 
-// post a comment
-router.post('/', withAuth, (req, res) => {
+router.get('/:id', (req,res) =>{
+    Follower.findOne({
+        where: {
+            user_id: req.session.user_id,
+            follow_id: req.params.id,
+        }
+    })
+    .then(dbListCData => res.json(dbListCData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+
+router.post('/', (req, res) => {
     // check the session
     if (req.session) {
-        // expects => {comment_text: "This is the comment", user_id: 1, post_id: 2}
-        Comment.create({
-            comment_text: req.body.comment_text,
+
+        Follower.create({
             user_id: req.session.user_id,
-            list_id: req.body.list_id
+            follow_id: req.body.follow_id
         })
             .then(dbCommentData => res.json(dbCommentData))
             .catch(err => {
@@ -30,11 +41,11 @@ router.post('/', withAuth, (req, res) => {
     }
 });
 
-// delete a comment
-router.delete('/:id', withAuth, (req, res) => {
-    Comment.destroy({
+router.delete('/', (req, res) => {
+    Follower.destroy({
         where: {
-            id: req.params.id
+            user_id: req.session.user_id,
+            follow_id: req.body.follow_id,
         }
     })
         .then(dbCommentData => {
@@ -50,7 +61,4 @@ router.delete('/:id', withAuth, (req, res) => {
         });
 });
 
-module.exports = router;
-
-
-
+module.exports = router

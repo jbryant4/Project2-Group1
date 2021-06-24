@@ -14,6 +14,17 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/:username', (req,res) => {
+  User.findOne({
+    where: {
+      username: req.params.username
+    },
+    attributes: {
+      exclude: ['password']
+    }
+  }).then (dbUserData => res.json(dbUserData))
+});
+
 //get user by id
 router.get('/:id', (req, res) => {
   User.findOne({
