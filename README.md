@@ -10,7 +10,7 @@ Clone the repo, navigate to the root folder,  run the following commands:
 * run schema in mySQL 
 * NPM run seed
 * go to localhost:3001
-NOTE: Deployed link below
+* NOTE  Deployed link below
 
 #### Movie API
 http://www.omdbapi.com/
