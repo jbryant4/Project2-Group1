@@ -1,4 +1,4 @@
-# Project2-Group1
+# myMovieList
 
 
 ## USER STORY
