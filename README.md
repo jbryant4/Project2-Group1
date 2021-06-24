@@ -2,8 +2,7 @@
 
 
 ## USER STORY
-As a user i want to be able to create,compare and like custom movie list made by multiple users,
-So that i can see what everyone has been watching during quarantine.
+As a user, I want to be able to create, compare and like custom movie lists; made by multiple users, so that I can see what everyone has been watching during quarantine.
 
 ### Setup 
 clone the repo, navigate to the root folder, run the following commands
@@ -32,16 +31,16 @@ The User can fetch a movie by title search.
 * bcrypt
 * dotenv
 
-## Link to walk thru video of application
-*TBD* https://drive.google.com/file/d/1-sClX_XSzxjUN0bqx11MJP5_2B15LFij/view
-
+## Link to walk thru video of app presentation
+https://drive.google.com/file/d/1M-r_vRbuwJU7QjoXV_Mjj-nc4GrljMeK/view
 
 
 ## Screenshots of app
-![](./assets/images/screenshots/tbd.png)
-![](./assets/images/screenshots/tbd.png)
-![](./assets/images/screenshots/tbd.png)
-
+![](./assets/images/screenshots/homepage.png)
+![](./assets/images/screenshots/profilepage.png)
+![](./assets/images/screenshots/login-signup.png)
+![](./assets/images/screenshots/movielist.png)
+![](./assets/images/screenshots/comments.png)
 
 ## Link to deployed application
 *TBD* Heroku
