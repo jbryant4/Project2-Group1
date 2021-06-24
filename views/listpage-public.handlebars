@@ -18,7 +18,9 @@
   </div>
 </div>
 
+
 {{#if loggedIn}}
+
 <div class="col-5">
   <div class="card">
     
@@ -29,7 +31,7 @@
       {{/each}}
       </div>
       <div>
-        <input type="text" placeholder="Leave a comment" />
+        <input type="text" id="comment-text" placeholder="Leave a comment" />
         <button type="submit" id="comment-btn">Comment</button>
       </div>
   </div>
@@ -38,3 +40,7 @@
 {{/if}}
 
 </div>
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}

@@ -75,7 +75,7 @@ router.get('/:id', (req, res) => {
       // const user = dbUserData.map(list => list.get({ plain: true }));
       const user = dbUserData.get({ plain: true });
       console.log(user);
-      res.render('profile-page-public', { //this file name has changed so this should also change
+      res.render('profilepage-public', { //this file name has changed so this should also change
         user,
         loggedIn: true
       });
