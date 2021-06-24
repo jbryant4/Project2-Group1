@@ -1,22 +1,23 @@
-<div class="row">
+<div class="flex-container" id="homepageContainer">
 
+    <div class="flex-row" id="hugCard">
 
-
-    <div class="col-3">
-        <div class="card text-center" id="hugCard">
+        <div class="card text-center">
             <div class="card-body">
                 <h3>Help Us Grow!</h3>
                 <p id="user-count">Total Users: {{totals.user}}</p>
                 <p id="list-count">Total Lists: {{totals.list}}</p>
                 <p id="movies-count">Total Movies: {{totals.movie}}</p>
             </div>
-
-
         </div>
+
+
     </div>
 
-    <div class="col">
+    <div class="flex-row" id="recsList">
+
         <h3>Current Recs</h3>
+
         <div class="listCards">
             {{#each lists as |list|}}
             <div class="card recent-list-card">
@@ -24,9 +25,13 @@
             </div>
             {{/each}}
         </div>
+        
     </div>
 
-    <div class="col">
+
+
+
+    <div class="flex-row" id="pops">
         <h3>Top of the Pops!</h3>
         <div class="listCards">
             {{#each voted as |list|}}
@@ -35,7 +40,6 @@
             </div>
             {{/each}}
         </div>
-
     </div>
 
 </div>
