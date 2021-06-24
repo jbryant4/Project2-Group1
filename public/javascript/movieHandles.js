@@ -83,7 +83,7 @@ async function removeMovie(event) {
 
 
     id = this.getAttribute('movie');
-    console.log(id, typeof id )
+    // console.log(id, typeof id )
     const response = await fetch('/api/listcontent/' + id, {
         method: 'DELETE',
         body: JSON.stringify({

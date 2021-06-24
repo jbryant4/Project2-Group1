@@ -94,7 +94,7 @@ router.get('/list/:id', (req, res) => {
             }
 
             const list = dbListData.get({ plain: true })
-            console.log(list)
+            // console.log(list)
 
             res.render('listpage-public', {
                 list,
@@ -144,7 +144,7 @@ router.get('/edit/:id', (req, res) => {
             }
 
             const list = dbListData.get({ plain: true })
-            console.log(list)
+            // console.log(list)
 
             res.render('listpage-user', {
                 list,

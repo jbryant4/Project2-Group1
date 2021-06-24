@@ -10,7 +10,7 @@ async function searchUser(event) {
         });
 
         if (response.ok) {
-            console.log(response);
+            // console.log(response);
 
             response.json().then(data => {
                 console.log(data)
