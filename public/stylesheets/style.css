@@ -145,6 +145,13 @@ h3 {
     padding-top: 10px;
 }
 
+#comment-text2 {
+    border-bottom-style: groove;
+    border-width: 5px;
+    
+}
+
+
 #usernameToFollow, .follow-btns, #userListsCard {
     margin: 10px;
 }
