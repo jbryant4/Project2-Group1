@@ -2,13 +2,26 @@
 
     <div class="col-3">
 
-        <div class="card" id="newList">
+        <div class="card col-12" id="newList">
             <div class="card-body">
                 <h3>Create a new list</h3>
                 <br />
-                <input type="text" id="new-list" placeholder="Enter a new list" />  
+                <input type="text" id="new-list" placeholder="Enter a new list" />
                 <br />
-                <button type="submit" id="search-btn">Add!</button>
+                <button type="submit" id="search-btn">Add List!</button>
+            </div>
+        </div>
+
+        <div class="card col-12" id="following">
+            <div class="card-body">
+                <h3>Following:</h3>
+                <br />
+                <ul>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                </ul>
             </div>
         </div>
 
@@ -17,32 +30,21 @@
     <div class="col-6">
         <div class="card" id="listCard">
             <h3>My Movie Lists</h3>
-            <ol class="list-list">
+            <div class="list-list">
                 {{#each lists as |list|}}
-                <li>
+                <div class="card recent-list-card">
                     {{> list-info list}}
-                </li>
+                    <a href="/edit/{{id}}">Edit</a>
+                </div>
                 {{/each}}
-            </ol>
-        </div>
-    </div>
-
-    <div class="col-3">
-
-        <div class="card" id="following">
-            <div class="card-body">
-                <h3>Following:</h3>
-                <br />
-                <ul>
-                  <li><a href=""></a></li>
-                  <li><a href=""></a></li>
-                  <li><a href=""></a></li>
-                  <li><a href=""></a></li>
-                </ul>
             </div>
         </div>
-
     </div>
+
+
 
 
 </div>
+
+<script src="/javascript/listHandles.js"></script>
+

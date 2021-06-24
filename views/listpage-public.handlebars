@@ -19,6 +19,9 @@
   </div>
 </div>
 
+
+{{#if loggedIn}}
+
 <div class="col-5">
   <div class="card">
     
@@ -37,6 +40,12 @@
   </div>
 
 </div>
-<script src="../javascript/upvote.js"></script>
+{{/if}}
 
 </div>
+
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+<script src="../javascript/upvote.js"></script>
+{{/if}}

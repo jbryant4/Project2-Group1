@@ -11,7 +11,14 @@ router.get('/', (req, res) => {
             res.status(500).json(err);
         });
 });
-
+// get movie by movie title
+router.get('/:movie', (req, res) => {
+    Movie.findOne({
+        where: {
+            movie_title: req.params.movie
+        }
+    }).then(dbUserData => res.json(dbUserData))
+});
 //FIND A WAY TO REMOVE LIST CONTENT
 router.get('/:id', (req, res) => {
     Movie.findOne({
@@ -23,7 +30,7 @@ router.get('/:id', (req, res) => {
                 model: List,
                 attributes: ['title']
             }
-        ] 
+        ]
     })
         .then(dbMoviesData => res.json(dbMoviesData))
         .catch(err => {
