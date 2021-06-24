@@ -36,14 +36,14 @@ The User can fetch a movie by title search.
 https://drive.google.com/file/d/1M-r_vRbuwJU7QjoXV_Mjj-nc4GrljMeK/view
 
 
-### Screenshots of app
+## Screenshots of app
 ![](./assets/images/screenshots/homepage.png)
 ![](./assets/images/screenshots/profilepage.png)
 ![](./assets/images/screenshots/login-signup.png)
 ![](./assets/images/screenshots/movielist.png)
 ![](./assets/images/screenshots/comments.png)
 
-### Link to deployed application
+## Link to deployed application
 *TBD* Heroku
 
 ## Contribution
