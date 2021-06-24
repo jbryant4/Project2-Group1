@@ -29,9 +29,9 @@
             <h3>User's Lists</h3>
             <div class="list-list">
                 {{#each user.lists as |list|}}
-                
+                <div class="card recent-list-card">
                     {{> list-info list}}
-                
+                </div>
                 {{/each}}
         </div>
         </div>
