@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <script src="https://kit.fontawesome.com/a8c6a3430b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
@@ -13,53 +12,47 @@
 </head>
 
 <body>
+     <nav class="navbar">
 
-    <header>
-        <nav class="navbar justify-content-between">
 
-            <h1>
-                <a href="/" id="title">myMovieList!</a>
-            </h1>
-
+        <h1 id="title">
+            <a href="/" id="title">My Movie List</a>
+        </h1>
+     
             {{#if loggedIn}}
-            <ul>
-                <label for="userSearchForm" id='search-err'></label>
-                <input type="text" id="user-search" placeholder="User Search" />
+            <form>
+                <label for="userSearchForm">Search for a user</label>
+                <input type="text" id="user-search" />
+                <button type="submit" id="search-btn">Search!</button>
+            </form>
 
-                <button id="userSearch" type="submit">Search!</button>
-                <a href="/profile" id="profPageNavLink">Profile Page</a>
-                <a href="/" id="moviesNavLink">Movies</a>
-                <a id="logout">logout</a>
-
-            </ul>
+            <div id="loggedInNavBtns">
+                <a class="btn" href="/profile" id="profPageNavLink">Profile Page</a>
+                <a class="btn" href="/" id="moviesNavLink">Movies</a>
+                <a class="btn" id="logout">logout</a>
+            </div>
+            
             {{else}}
-            <ul>
-                {{!-- I'm assuming here for `listPageBtn` we'll just send the user home if they're not logged in
-                --}}
+            <div id="loggedOutNavBtns">
                 <a href="/" class="btn">Movies</a>
                 <a href="/login" class="btn">Login or Sign Up!</a>
-            </ul>
+            </div>
             {{/if}}
 
         </nav>
-    </header>
+    
 
     <main>
-        <div class="container">
             {{{ body }}}
-        </div>
     </main>
 
-    <footer class="text-align-center">
+    <footer class="mt-auto">
         <p>Thanks for visiting!</p>
     </footer>
 
     {{#if loggedIn}}
-    
     <script src="/javascript/logout.js"></script>
     <script src="/javascript/usersearch.js"></script>
-    
-    
     {{/if}}
 </body>
 
