@@ -1,11 +1,11 @@
 {{!-- <div class="card recent-list-card"> --}}
     <div class="card-title">
-        <a href="/list/{{id}}" >{{title}}</a>
+        <a class='btn' href="/list/{{id}}" >{{title}}</a>
     </div>
     <div class="meta">
         Created on {{format_date created_at}}
         |
-        <a href="/list/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+        <a  href="/list/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
     </div>
 {{!-- </div> --}}
 {{!-- <div class="card recent-list-card">
