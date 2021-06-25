@@ -1,0 +1,50 @@
+<div class="row">
+
+    <div class="col-md-12 col-lg-4 user-pro">
+
+        <div class="card col-md-5 col-lg-12" id="newList">
+            <div class="card-body">
+                <h3 class="list-h3">Create a new list</h3>
+                <br />
+                <input type="text" id="new-list" placeholder="Enter a new list" />
+                <br />
+                <button type="submit"  id="search-btn">Add List!</button>
+            </div>
+        </div>
+
+        <div class="card col-md-5 col-lg-12" id="following">
+            <div class="card-body">
+                <h3 class="list-h3">Following:</h3>
+                <br />
+                <ul>
+                    {{#each follower.follower_list as |follower|}}
+                    <li><a href="/profile/{{id}}">{{username}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-12 col-lg-7">
+        <div class="card" id="listCard">
+            <h3 class="list-h3">My Movie Lists</h3>
+            <div class="list-list">
+                {{#each lists as |list|}}
+                <div class="card recent-list-card">
+                    {{> list-info list}}
+                    <a class='btn edit' href="/edit/{{id}}">Edit this List</a>
+                    <button type="submit" class="dlt-btn" list='{{id}}'>Remove List</button>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+<script src="/javascript/listHandles.js"></script>
+

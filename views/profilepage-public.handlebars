@@ -1,0 +1,37 @@
+<div class="flex-container" id="profileContainer">
+
+    <div class="flex-row" id="followUserCard">
+
+        <div class="card" id="profileCard">
+            <div class="card-body">
+
+                <div class="card-header" id="usernameToFollow">
+                    <h3 class="list-h3">{{user.username}}</h3>
+                </div>
+
+                <div class="follow-btns">
+                    {{!-- If not following--}}
+                    <button id="follow" class="btn">Follow</button>
+                    {{!-- If following--}}
+                    <button id="unfollow" class="btn">Unfollow</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="flex-row" id="userListsCard">
+        <div>
+            <div class="card" id="listCard">
+                <h3 class="list-h3">User's Lists</h3>
+                <div class="listCards">
+                    {{#each lists as |list|}}
+                    {{> list-info list}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="/javascript/followHandles.js"></script>

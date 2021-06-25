@@ -2,12 +2,12 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// attach Vote to sequelize Mmodel 
-class Vote extends Model { }
+// attach Follower to sequelize model 
+class Follower extends Model { }
 
-//Vote Model
-// id, user_id, list_id 
-Vote.init(
+
+// id, user_id, follow_id 
+Follower.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -21,10 +21,10 @@ Vote.init(
                 key: 'id'
             }
         },
-        list_id: {
+        follow_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'list',
+                model: 'user',
                 key: 'id'
             }
         }
@@ -34,8 +34,8 @@ Vote.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'vote'
+        modelName: 'follower'
     }
 );
 
-module.exports = Vote;
+module.exports = Follower;
