@@ -98,7 +98,7 @@ router.get('/:id', withAuth, (req, res) => {
         // serialize the data
         // const user = dbUserData.map(list => list.get({ plain: true }));
         const user = dbUserData.get({ plain: true });
-        // console.log(user);
+        console.log(user);
         res.render('profilepage-public', { //this file name has changed so this should also change
           user,
           loggedIn: true
