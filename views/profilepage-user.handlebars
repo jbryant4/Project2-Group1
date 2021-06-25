@@ -33,7 +33,7 @@
                 {{#each lists as |list|}}
                 <div class="card recent-list-card">
                     {{> list-info list}}
-                    <a href="/edit/{{id}}">Edit</a>
+                    <a class='btn edit' href="/edit/{{id}}">Edit this List</a>
                     <button type="submit" class="dlt-btn" list='{{id}}'>Remove List</button>
                 </div>
                 {{/each}}
