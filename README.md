@@ -45,7 +45,7 @@ https://drive.google.com/file/d/1M-r_vRbuwJU7QjoXV_Mjj-nc4GrljMeK/view
 ![](./assets/images/screenshots/comments.png)
 
 ## Link to deployed application
-*TBD* Heroku
+https://mymovielistapp.herokuapp.com/
 
 ## Contribution
 Created by Joseph Bryant, Lily Hissong, Kellie Werrell, and Pablo De La Cruz  :star:
